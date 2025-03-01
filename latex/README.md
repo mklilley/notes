@@ -1,4 +1,4 @@
-# Latex files 
+# Latex files
 
 This folder contains Latex files create from the corresponding markdown file in the root of the repository.
 
