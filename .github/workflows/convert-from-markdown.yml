@@ -36,13 +36,13 @@ jobs:
           # Get a list of modified markdown files, including README.md
           if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
             echo "First push to this branch. Listing all markdown files in the commit."
-            git show --name-status --pretty="" ${{ github.sha }} | grep '\.md$' > markdown_changes.txt
+            git show --name-status --pretty="" ${{ github.sha }} | grep '\.md$' | grep -v -E '(pandoc|latex|pdf)/' > markdown_changes.txt
           else
             if git cat-file -e ${{ github.event.before }}^{commit} 2>/dev/null; then
-              git diff --name-status ${{ github.event.before }} ${{ github.sha }} | grep '\.md$' > markdown_changes.txt
+              git diff --name-status ${{ github.event.before }} ${{ github.sha }} | grep '\.md$' | grep -v -E '(pandoc|latex|pdf)/' > markdown_changes.txt
             else
               git fetch origin ${{ github.event.before }} --depth=1
-              git diff --name-status ${{ github.event.before }} ${{ github.sha }} | grep '\.md$' > markdown_changes.txt
+              git diff --name-status ${{ github.event.before }} ${{ github.sha }} | grep '\.md$' | grep -v -E '(pandoc|latex|pdf)/' > markdown_changes.txt
             fi
           fi
           cat markdown_changes.txt
