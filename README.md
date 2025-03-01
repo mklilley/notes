@@ -12,7 +12,7 @@ You write notes in markdown format, including things like equations, references 
 - Latex is journal friendly
 - PDF is email friendly
 
-We'll always have formats for every use case.
+This way, you can always have formats for every use case.
 
 Below is a little demo of some of the essential markdown features. Check out the source code to see how human readable it all is.
 
